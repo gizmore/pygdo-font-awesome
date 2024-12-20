@@ -12,7 +12,7 @@ class module_icon_fa(GDO_Module):
         super().__init__()
         self._license = 'Font Awesome Free License'
 
-    def gdo_init(self):
+    async def gdo_init(self):
         IconProvider.register(IconFA)
 
     def gdo_licenses(self) -> list[str]:
@@ -28,7 +28,7 @@ class module_icon_fa(GDO_Module):
     def cfg_fa_style(self) -> str:
         return self.get_config_val('fa_style')
 
-    def gdo_load_scripts(self, page):
-        dot_min = self.get_minify_append()
+    async def gdo_load_scripts(self, page):
+        dot_min = await self.get_minify_append()
         self.add_bower_css(f"@fortawesome/fontawesome-free/css/all{dot_min}.css")
 
