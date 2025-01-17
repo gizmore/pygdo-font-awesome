@@ -1,6 +1,5 @@
 from gdo.base.GDO_Module import GDO_Module
 from gdo.base.GDT import GDT
-from gdo.base.Util import dump
 from gdo.core.GDT_Enum import GDT_Enum
 from gdo.icon_fa.IconFA import IconFA
 from gdo.ui.IconProvider import IconProvider
@@ -29,6 +28,5 @@ class module_icon_fa(GDO_Module):
         return self.get_config_val('fa_style')
 
     def gdo_load_scripts(self, page):
-        dot_min = self.get_minify_append()
-        self.add_bower_css(f"@fortawesome/fontawesome-free/css/all{dot_min}.css")
+        self.add_bower_css("@fortawesome/fontawesome-free/css/all.css")
 
