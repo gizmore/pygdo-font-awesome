@@ -100,6 +100,7 @@ class IconFA(IconProvider):
             'reply': 'reply',
             'required': 'asterisk',
             'schedule': 'clipboard-list',
+            'score': 'coin',
             'search': 'search',
             'settings': 'cog',
             'spiderweb': 'dharmachakra',
