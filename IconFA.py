@@ -1,15 +1,18 @@
-import functools
+from functools import lru_cache
 
 from gdo.base.Render import Mode
+from gdo.base.Trans import t
+from gdo.base.Util import module_config_var
 from gdo.ui.IconProvider import IconProvider
 
 
 class IconFA(IconProvider):
 
     @classmethod
-    @functools.cache
+    @lru_cache
     def MAP(cls) -> dict:
         return {
+            'account': 'user',
             'add': 'plus',
             'address': 'address-book',
             'alert': 'bell',
@@ -64,6 +67,7 @@ class IconFA(IconProvider):
             'gender': 'venus-mars',
             'group': 'users',
             'guitar': 'guitar',
+            'hands': 'hands',
             'heart': 'heart',
             'help': 'question-circle',
             'house': 'house',
@@ -75,16 +79,19 @@ class IconFA(IconProvider):
             'level': 'trophy',
             'license': 'paragraph',
             'like': 'thumbs-up',
-            'link': 'chain',
+            'link': 'link',
             'list': 'th-list',
             'location': 'location-dot',
             'lock': 'lock',
+            'magic': 'wand-magic-sparkles',
             'male': 'male',
             'medal': 'medal',
             'menu': 'bars',
             'message': 'comment-dots',
+            'metal': 'hand-fist',
             'minus': 'minus',
             'money': 'money-bill',
+            'name': 'id-badge',
             'numeric': 'hashtag',
             'password': 'key',
             'pause': 'pause-circle',
@@ -100,41 +107,46 @@ class IconFA(IconProvider):
             'reply': 'reply',
             'required': 'asterisk',
             'schedule': 'clipboard-list',
-            'score': 'coin',
+            'score': 'coins',
             'search': 'search',
+            'select': 'stack-exchange',
             'settings': 'cog',
+            'shopping': 'bag-shopping',
             'spiderweb': 'dharmachakra',
             'star': 'star',
             'stop': 'stop',
             'sun': 'sun',
             'table': 'table',
             'tag': 'tags',
+            'text': 't',
             'thumbs_up': 'thumbs-up',
             'thumbs_down': 'thumbs-down',
             'thumbs_none': 'hand-point-right',
             'time': 'stopwatch',
             'title': 'hashtag',
             'trophy': 'trophy',
-            'unicorn': 'unicorn',
+            'unicorn': 'horse-head',
             'upload': 'upload',
             'url': 'link',
             'user': 'user',
             'users': 'users',
             'view': 'eye',
             'vote': 'vote-yea',
-            'wait': 'alarm-clock',
-            'whatsapp': 'whatsapp fa-brands',
+            'wait': 'hourglass-half',
+            'whatsapp': 'whatsapp',
             'work': 'person-digging',
             'write': 'pencil',
         }
 
     @classmethod
-    def display_icon_html(cls, name: str, mode: Mode, alt: str, color: str = None, size: str = None) -> str:
-        from gdo.icon_fa.module_icon_fa import module_icon_fa
+    def display_icon_html(cls, name: str, mode: Mode, alt_key: str = None, alt_args: tuple[str|int|float,...]=None, color: str = None, size: str = None) -> str:
         ico = cls.MAP()[name]
-        alt = f'role="icon" aria-label="{alt}"'
+        alt_key = alt_key or 'an_icon'
+        alt_args = alt_args if alt_key else t(name)
+        alt = f'role="img" aria-label="{t(alt_key, alt_args)}"'
         color = f" color: {color};" if color else ""
         size = f" font-size: {size};" if size else ""
-        style = f' style="{color} {size}"' if color or size else ""
-        fas = module_icon_fa.instance().cfg_fa_style()
+        style = (color + size).strip()
+        style = f' style="{style}"' if style else ''
+        fas = module_config_var('icon_fa', 'fa_style')
         return f'<span class="gdt-icon gdt-fa-icon"{style}><i {alt} class="{fas} fa-{ico}"></i></span>'
