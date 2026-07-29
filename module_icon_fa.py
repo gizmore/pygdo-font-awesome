@@ -1,3 +1,5 @@
+import shutil
+
 from gdo.base.Application import Application
 from gdo.base.GDO_Module import GDO_Module
 from gdo.base.GDT import GDT
@@ -31,4 +33,8 @@ class module_icon_fa(GDO_Module):
 
     def gdo_init(self):
         IconProvider.register(IconFA)
-        Files.copy_dir(self.file_path('node_modules/@fortawesome/fontawesome-free/webfonts/'), self.assets_path('webfonts/'))
+        Files.copy_dir(
+            self.file_path('node_modules/@fortawesome/fontawesome-free/webfonts/'),
+            self.assets_path('webfonts/'),
+            shutil.copyfile,
+        )
