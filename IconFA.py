@@ -125,6 +125,7 @@ class IconFA(IconProvider):
             'time': 'stopwatch',
             'title': 'hashtag',
             'trophy': 'trophy',
+            'timezone': 'clock',
             'unicorn': 'horse-head',
             'upload': 'upload',
             'url': 'link',
