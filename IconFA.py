@@ -47,6 +47,7 @@ class IconFA(IconProvider):
             'create': 'plus-circle',
             'credits': 'credit-card',
             'cut': 'cut',
+            'database': 'database',
             'delete': 'minus-circle',
             'diamond': 'diamond',
             'done': 'check',
