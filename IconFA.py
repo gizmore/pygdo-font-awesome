@@ -35,6 +35,7 @@ class IconFA(IconProvider):
             'business': 'store',
             'calendar': 'calendar-alt',
             'captcha': 'lock',
+            'card': 'diamond',
             'caret': 'caret-right',
             'cc': 'address-card',
             'check': 'check',
