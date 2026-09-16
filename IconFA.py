@@ -33,6 +33,7 @@ class IconFA(IconProvider):
             'book': 'book',
             'bulb': 'lightbulb',
             'business': 'store',
+            'cake': 'cake',
             'calendar': 'calendar-alt',
             'captcha': 'lock',
             'card': 'diamond',
