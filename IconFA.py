@@ -143,6 +143,7 @@ class IconFA(IconProvider):
             'whatsapp': 'whatsapp',
             'work': 'person-digging',
             'write': 'pencil',
+            'youtube': 'youtube',
         }
 
     @classmethod
