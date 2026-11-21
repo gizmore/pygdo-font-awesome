@@ -156,5 +156,5 @@ class IconFA(IconProvider):
         size = f" font-size: {size};" if size else ""
         style = (color + size).strip()
         style = f' style="{style}"' if style else ''
-        fas = module_config_var('icon_fa', 'fa_style')
+        fas = 'fab' if name in ('youtube', 'whatsapp') else module_config_var('icon_fa', 'fa_style')
         return f'<span class="gdt-icon gdt-fa-icon"{style}><i {alt} class="{fas} fa-{ico}"></i></span>'
