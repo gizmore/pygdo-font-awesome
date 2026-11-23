@@ -40,6 +40,7 @@ class IconFA(IconProvider):
             'caret': 'caret-right',
             'cc': 'address-card',
             'check': 'check',
+            'clock': 'clock',
             'close': 'window-close',
             'code': 'code',
             'color': 'palette',
